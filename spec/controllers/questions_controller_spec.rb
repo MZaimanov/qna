@@ -27,6 +27,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'GET #new' do
+    sign_in_user
 
     before { get :new }
     it 'Создает новый вопрос и присваивает ег переменой @question' do
@@ -39,6 +40,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'GET #edit' do
+    sign_in_user
     before { get :edit, params: { id: question } }
 
     it 'Установить запрошенную переменую в @question' do
@@ -51,6 +53,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'POST #create' do
+    sign_in_user
     context 'Создание валидного объекта с правильными атрибутами'do
       it 'Сохранение нового question в БД' do
         expect { post :create, params: { question: attributes_for(:question)} }.to change(Question, :count).by(1)
@@ -74,6 +77,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'PATCH  #update' do
+    sign_in_user
     context 'Правильные атрибуты' do
       it 'Установить запрошенную переменую в @question' do
         patch :update, params: { id: question, question: attributes_for(:question) }
@@ -109,6 +113,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'DELETE  #destroy' do
+    sign_in_user
     before { question }
 
     it 'Удаление question' do

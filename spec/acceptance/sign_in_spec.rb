@@ -6,14 +6,11 @@ feature 'Вход пользователя в систему', %q{
   Нужна возможность входа в систему
 } do
 
-  scenario 'Зарегестрированный пользователь может войти' do
-    User.create!(email: 'user@test.ru', password: '12345678')
+  given(:user) { create(:user) }
 
-    visit new_user_session_path
-    fill_in 'Email', with: 'user@test.ru'
-    fill_in 'Password', with: '12345678'
-    #save_and_open_page
-    click_on 'Log in'
+  scenario 'Зарегестрированный пользователь может войти' do
+
+    sign_in(user)
 
     expect(page).to have_content 'Signed in successfully.'
     expect(current_path).to eq root_path
