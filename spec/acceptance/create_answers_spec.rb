@@ -9,7 +9,7 @@ feature 'User answers', %q{
   given(:user) { create(:user) }
   given(:question) { create(:question) }
 
-  scenario 'Аутетифицированный пользователь может создавать ответ' do
+  scenario 'Аутетифицированный пользователь может создавать ответ', js: true do
     sign_in(user)
     visit question_path(question)
 
@@ -17,8 +17,8 @@ feature 'User answers', %q{
     click_on 'Create'
 
     expect(current_path).to eq question_path(question)
-    # within '.answers' do
+    within '.answers' do
       expect(page).to have_content 'My answer'
-    # end
+    end
   end
 end
