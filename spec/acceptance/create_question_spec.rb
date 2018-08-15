@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'acceptance_helper'
 
 feature 'Create question', %q{
   Для того чтобы получить ответ от сообщества

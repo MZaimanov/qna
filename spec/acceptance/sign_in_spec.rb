@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative 'acceptance_helper'
 
 feature 'Вход пользователя в систему', %q{
   Для того чтобы задавать вопросы
