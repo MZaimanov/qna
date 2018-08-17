@@ -4,10 +4,9 @@ p1= @question.body
   = render 'answers'
 
 = form_for [@question, @answer], remote: true  do |f|
-  p
-    = f.label :body, 'Your answer'
 
-     .answer-reeors
-    = f.text_area :body
-  p= f.submit 'Create'
+  = f.label :body, 'Your answer'
+  .answer-errors
+  = f.text_area :body
+  p = f.submit 'Create'
 
